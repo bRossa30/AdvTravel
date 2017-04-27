@@ -1,0 +1,337 @@
+@import variable
+
+//NAVBAR
+
+header 
+	width: 100%
+	background: $dark
+	height: $nav-height
+
+	.container 
+		padding: 0
+
+.logo 
+	margin: 10px 10px 0
+	font:
+		family: 'Molle', cursive
+		size: 30px
+	letter-spacing: 2px
+	line-height: 1
+	color: $white
+	float: left
+
+nav 
+	height: $nav-height /*witout that it's additional 2.5px under nav*/
+
+.main-menu 
+	float: right
+	
+	li 
+		display: inline-block
+
+	a 
+		display: block
+		padding: 0 40px
+		line-height: $nav-height
+		color: $white
+		text-transform: uppercase
+		font-family: 'Open	Sans', sans-serif
+		
+		&:hover,
+		&:focus,
+		&:active
+			background: $pink
+
+@media ($breakpoint-sm_max) 
+	.main-menu 
+		a 
+			padding: 0 20px
+
+@media ($breakpoint-s_max) 
+	header, nav 
+		height: auto
+		text-align: center
+
+	.main-menu
+		float: none
+		
+		li
+			display: block
+
+	.logo
+		margin-top: 0
+		line-height: $nav-height
+		float: none
+
+// BANER
+
+.hero 
+	background: url("../img/hero.jpg") 0/cover no-repeat
+	height: calc(100vh - #{$nav-height})
+
+
+.slogan 
+	float: right
+	max-width: 700px
+	margin-top: 30vh
+	padding: 40px
+	background: $semi-transparent
+	color: $white
+	font-family: 'Open Sans', sans-serif
+	text-transform: uppercase
+
+
+@media ($breakpoint-s_max) 
+	.hero 
+		height: 100vh
+	
+	.slogan 
+		margin-top: 20vh
+		text-align: center
+
+//ADVANTAGES
+
+.advantages-box
+	cursor: pointer
+
+	&:hover h4
+		color: $pink
+	
+	&:hover i.fa
+		color: #DA0084
+		+transform(scale(1.05))
+
+	i.fa
+		font-size: 50px
+		color: $icon-color
+		width: 65px
+		height: 65px
+		line-height: 65px
+		border-radius: 6px
+		margin-bottom: 20px
+		transition: .3s	
+
+//WORKS
+
+.works .container 
+	max-width: 800px
+	padding-top: 20px
+
+//GALLERY
+
+%pos-absolute
+	position: absolute
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+
+.gallery [class*="col"] 
+	height: $gallery-height /*without that it's 5px of margin */
+
+	img 
+		width: 100%
+		height: $gallery-height
+		object-fit: cover
+
+.gallery-box 
+	position: relative
+
+	&:before 
+		content: ""
+		background: $black
+		opacity: 0
+		transition: opacity .3s
+		@extend %pos-absolute
+
+	&:hover .layer 
+		+transform(scale(1))
+
+	&:hover:before 
+		opacity: .5
+
+.layer
+	@extend %pos-absolute
+	text-align: center
+	line-height: $gallery-height
+	transition: .3s
+	+transform(scale(0))
+
+	i.fa 
+		background: $light-gray
+		color: $black
+		width: 30px
+		height: 30px
+		line-height: 30px
+		margin-right: 10px
+		border-radius: 6px
+		cursor: pointer
+
+		&-link 
+			+transform(rotate(90deg))
+
+@media ($breakpoint-s_max) 
+	.gallery-box .layer 
+		+transform(scale(1))
+
+//COMPANY
+
+.company 
+	p 
+		max-width: 800px
+		margin: 0 auto
+		padding-bottom: 50px
+	
+	img
+		border-radius: 50%
+		width: $company-img-dim
+		height: $company-img-dim
+		object-fit: cover
+
+.company-box 
+	width: $company-img-dim
+	margin: 0 auto
+
+	p
+		position: absolute
+		top: 0
+		line-height: $company-img-dim
+		text-align: center
+		width: $company-img-dim
+		height: $company-img-dim
+		color: $white
+		background: radial-gradient(rgba( 0, 0, 0, .7), transparent)
+		border-radius: 50%
+		transition: .3s
+		+transform(scale(0))
+
+.company-description 
+	position: relative
+	height: $company-img-dim
+
+	&:hover p 
+		+transform(scale(1))
+
+	h4 
+		width: 100%
+		margin: 0 auto
+		text-align: center
+
+@media ($breakpoint-s_max) 
+	.company-description p 
+		+transform(scale(1))
+
+//TRAVEL
+
+
+.travel 
+	background: url("../img/rocks.jpeg") 0/cover fixed
+	color: $white
+	text-align: center
+	margin-bottom: 0
+	padding-bottom: 0
+
+	p 
+		text-align: left
+
+	.container
+		padding-bottom: 0
+
+	.button 
+		margin-top: 30px
+
+.travel-img 
+	height: 300px
+	width: 250px
+	margin: 0 auto
+
+	img 
+		width: 100%
+		height: 100%
+		object-fit: cover
+		border-radius: 50% 50% 0 0
+
+@media ($breakpoint-s_max) 
+	.travel-img
+		display: none
+
+//COUNTERS
+
+.counter-item 
+	font:
+		size: 2.875rem
+		family: 'Roboto', sans-serif
+		weight: 600
+
+.counter-description 
+	margin-top: 20px
+	text-transform: uppercase
+	color: $pink
+
+//FOOTER
+
+footer 
+	background: $dark
+	color: $white
+	
+	h3 
+		text-transform: uppercase
+		font:
+			family: 'Roboto', sans-serif
+			weight: 600
+			size: 1.875rem
+		margin-bottom: 20px
+		display: inline-block
+		position: relative
+
+		&:after 
+			content: ""
+			height: 2px
+			width: 100px
+			position: absolute
+			top: 50%
+			left: calc(100% + 10px)
+			background: $white
+
+.contact-row [class*="col"] 
+	padding-top: 0
+	padding-left: 0
+
+footer i.fa 
+	background: $pink
+	color: $white
+	width: 30px
+	height: 30px
+	line-height: 30px
+	border-radius: 6px
+	cursor: pointer
+	margin-right: 10px
+	margin-top: 20px
+	text-align: center
+	transition: .3s
+
+	&:hover 
+		color: $pink
+		background: $white
+
+@media ($breakpoint-sm_max) 
+	.contact-row 
+		.col-m-4 
+			text-align: right
+ 
+		.col-m-8 
+			text-align: left
+
+@media (max-width: 1300px)
+	footer h3:after 
+		top: 100%
+		left: 50%
+		+transform(translateX(-50%))
+
+@media (max-width: 1300px)
+	footer .contact-row [class*="col-"]
+		float: none
+		text-align: center
+		margin: 0 auto
+		padding-right: 0 
+
